@@ -1,0 +1,27 @@
+{
+  "name": "christmas-slide",
+  "version": "1.0.0",
+  "description": "A quiet, intimate, romantic Christmas slide experience",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "deploy": "vercel --prod",
+    "preview": "vercel",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "christmas",
+    "slides",
+    "romantic",
+    "gift"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^50.1.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

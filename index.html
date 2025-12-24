@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>To You — Christmas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Progress Indicator -->
+    <div class="progress-indicator" aria-hidden="true">
+        <span class="progress-current">1</span> / <span class="progress-total">7</span>
+    </div>
+
+    <!-- Audio Control -->
+    <div class="audio-control-wrapper">
+        <button class="audio-control" aria-label="Toggle background music">
+            <span class="audio-icon">♪</span>
+            <span class="audio-label">Music</span>
+        </button>
+    </div>
+
+    <!-- Slides Container -->
+    <main class="slides-container">
+        <!-- Slide 1: Entrance -->
+        <section class="slide active" data-slide="1">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">To YThy</p>
+                    <p class="line">This Christmas, I made something small.</p>
+                    <p class="line">Just for you.</p>
+                </div>
+                <button class="nav-button" data-action="next">Let's go 🖤</button>
+            </div>
+        </section>
+
+        <!-- Slide 2: Tone Setting -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">I didn't prepare anything expensive this year.</p>
+                    <p class="line">Just a few moments.</p>
+                    <p class="line">And a story…</p>
+                    <p class="line">about us.</p>
+                </div>
+                <button class="nav-button" data-action="next">I'll tell you something...</button>
+            </div>
+        </section>
+
+        <!-- Slide 3: Memory -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">I still remember the first time</p>
+                    <p class="line">we were there together.</p>
+                    <p class="line"></p>
+                    <p class="line">It wasn't perfect.</p>
+                    <p class="line">But somehow, it felt right.</p>
+                </div>
+                <button class="nav-button" data-action="next">Let's continue... 🖤</button>
+            </div>
+        </section>
+
+        <!-- Slide 4: Growth -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">We've had moments when things felt heavy.</p>
+                    <p class="line">Times when I didn't say the right words.</p>
+                    <p class="line"></p>
+                    <p class="line">But you stayed.</p>
+                    <p class="line">And that meant more than you know.</p>
+                </div>
+                <button class="nav-button" data-action="next">I want to say something... 🖤</button>
+            </div>
+        </section>
+
+        <!-- Slide 5: Gratitude -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">Thank you</p>
+                    <p class="line">for your patience,</p>
+                    <p class="line">for your kindness,</p>
+                    <p class="line">and for choosing me</p>
+                    <p class="line">even on ordinary days.</p>
+                    <p class="line"></p>
+                    <p class="line">You make things feel warmer,</p>
+                    <p class="line">just by being there.</p>
+                </div>
+                <button class="nav-button" data-action="next">Thank you for everything 🖤</button>
+            </div>
+        </section>
+
+        <!-- Slide 6: Promise -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">I can't promise perfection.</p>
+                    <p class="line"></p>
+                    <p class="line">But I promise to listen better.</p>
+                    <p class="line">To care more deeply.</p>
+                    <p class="line">And to keep choosing you —</p>
+                    <p class="line">every day.</p>
+                </div>
+                <button class="nav-button" data-action="next">Just one more thing... 🖤</button>
+            </div>
+        </section>
+
+        <!-- Slide 7: Ending -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+                <div class="text-content">
+                    <p class="line">This Christmas,</p>
+                    <p class="line">and in all the days that follow…</p>
+                    <p class="line"></p>
+                    <p class="line">I'm grateful for you.</p>
+                    <p class="line"></p>
+                    <p class="line highlight-line">I love you, bé Ù 🖤</p>
+                </div>
+                <p class="subtle-text">Merry Christmas !!!</p>
+                <button class="nav-button" data-action="restart">The end and to be continued... 🖤</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="assets/Juice WRLD - She's Too Special (Prod. by dfk).mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Audio Error Message -->
+    <div class="audio-error" id="audio-error" style="display: none;">
+        Audio file not found. Please add it to /assets.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,320 @@
+/* CSS Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --bg-gradient-start: #1a0f1f;
+    --bg-gradient-end: #2d1b35;
+    --text-primary: #F7C6D9;
+    --text-secondary: #E9AFC8;
+    --button-bg: #A7D8F5;
+    --button-hover: #8CCAF0;
+    --button-active: #79BFEA;
+    --button-text: #0B1320;
+    --button-focus: #F7C6D9;
+    --glow: rgba(255, 255, 255, 0.1);
+    
+    /* Spacing */
+    --container-max-width: 720px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Body & Background */
+body {
+    font-family: 'Grand Hotel', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    min-height: 100dvh;
+    overflow: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/mikey.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(26, 15, 31, 0.6) 0%, rgba(45, 27, 53, 0.6) 100%);
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Subtle ambient breathing animation */
+@media (prefers-reduced-motion: no-preference) {
+    body.ambient-motion::after {
+        animation: ambientBreath 18s ease-in-out infinite;
+    }
+    
+    body.ambient-motion::before {
+        animation: ambientScale 20s ease-in-out infinite;
+    }
+}
+
+@keyframes ambientBreath {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.65;
+    }
+}
+
+@keyframes ambientScale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.015);
+    }
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: none; /* Hidden - removed progress indicator */
+}
+
+/* Audio Control */
+.audio-control-wrapper {
+    position: fixed;
+    top: calc(20px + var(--safe-top));
+    left: min(4vw, 24px);
+    z-index: 100;
+    display: none; /* Hidden - audio starts automatically on first user interaction */
+}
+
+.audio-control {
+    background: var(--button-bg);
+    border: 1px solid rgba(167, 216, 245, 0.3);
+    color: var(--button-text);
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
+    border-radius: 24px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+}
+
+.audio-control:hover {
+    background: var(--button-hover);
+}
+
+.audio-control:focus {
+    outline: 2px solid var(--button-focus);
+    outline-offset: 2px;
+}
+
+.audio-icon {
+    font-size: 1.1em;
+}
+
+.audio-control.muted .audio-icon {
+    opacity: 0.5;
+}
+
+/* Slides Container */
+.slides-container {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* Slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    padding: calc(40px + var(--safe-top)) min(4vw, 24px) calc(100px + var(--safe-bottom)) min(4vw, 24px);
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Slide Content */
+.slide-content {
+    width: min(92vw, var(--container-max-width));
+    max-width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(32px, 8vw, 48px);
+    min-height: 0;
+}
+
+/* Text Content */
+.text-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 4vw, 24px);
+    width: 100%;
+}
+
+.text-content .line {
+    font-size: clamp(1.875rem, 7vw, 2.75rem);
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    color: var(--text-primary);
+}
+
+.text-content .line:empty {
+    height: clamp(16px, 4vw, 24px);
+    opacity: 0;
+}
+
+/* Highlight line - special emphasis for "I love you" */
+.text-content .line.highlight-line {
+    font-size: clamp(2.25rem, 8.5vw, 3.5rem);
+    font-weight: 350;
+    letter-spacing: 0.02em;
+    margin-top: clamp(8px, 2vw, 12px);
+    margin-bottom: clamp(8px, 2vw, 12px);
+}
+
+/* Subtle Text (for Slide 7) */
+.subtle-text {
+    font-size: clamp(1.625rem, 6vw, 2.25rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    margin-top: clamp(16px, 4vw, 24px);
+    margin-bottom: clamp(24px, 6vw, 40px);
+}
+
+/* Navigation Button */
+.nav-button {
+    background: var(--button-bg);
+    border: 1px solid rgba(167, 216, 245, 0.3);
+    color: var(--button-text);
+    padding: clamp(14px, 3.5vw, 18px) clamp(32px, 8vw, 48px);
+    border-radius: 32px;
+    font-family: 'Grand Hotel', cursive;
+    font-size: clamp(1.625rem, 5vw, 2.125rem);
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    backdrop-filter: blur(8px);
+    min-height: 48px;
+    min-width: 140px;
+    opacity: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-button:hover:not(:disabled) {
+    background: var(--button-hover);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.nav-button:active:not(:disabled) {
+    background: var(--button-active);
+    transform: translateY(0) scale(0.98);
+}
+
+.nav-button:focus {
+    outline: 2px solid var(--button-focus);
+    outline-offset: 3px;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Audio Error Message */
+.audio-error {
+    position: fixed;
+    bottom: calc(80px + var(--safe-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--text-secondary);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    z-index: 200;
+    backdrop-filter: blur(8px);
+    text-align: center;
+    max-width: min(85vw, 400px);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+    .slide {
+        padding-top: calc(60px + var(--safe-top));
+    }
+    
+    .text-content .line {
+        line-height: 1.7;
+    }
+}
+
+/* Desktop Enhancements */
+@media (min-width: 768px) {
+    .text-content .line {
+        line-height: 1.65;
+    }
+    
+    .nav-button {
+        min-width: 180px;
+    }
+}
+
+/* Very Large Screens */
+@media (min-width: 1366px) {
+    :root {
+        --container-max-width: 720px;
+    }
+}

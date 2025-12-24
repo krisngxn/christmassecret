@@ -31,22 +31,47 @@ Works in all modern browsers that support:
 - ES6+ JavaScript
 - GSAP (loaded via CDN)
 
+## Development
+
+### Install dependencies (optional, for deployment scripts):
+```bash
+pnpm install
+# or
+yarn install
+# or
+npm install
+```
+
+### Run locally:
+```bash
+pnpm dev
+# or
+yarn dev
+# or
+npm run dev
+```
+
 ## Deployment
+
+**No build step required!** This is a pure static site - just deploy the files as-is.
 
 ### Option 1: Vercel (Recommended)
 
-1. Install Vercel CLI (if not already installed):
-   ```bash
-   npm i -g vercel
-   ```
+Using pnpm/yarn/npm:
+```bash
+pnpm deploy
+# or
+yarn deploy
+# or
+npm run deploy
+```
 
-2. Deploy:
-   ```bash
-   cd christmas-slide
-   vercel
-   ```
+Or directly:
+```bash
+npx vercel --prod
+```
 
-3. Follow the prompts. Your site will be live instantly!
+Follow the prompts (log in if needed). Your site will be live instantly!
 
 ### Option 2: Vercel Web Interface
 
@@ -55,18 +80,15 @@ Works in all modern browsers that support:
 3. Import your repository or drag and drop the `christmas-slide` folder
 4. Deploy!
 
-### Option 3: Netlify
+### Option 3: Netlify (No install needed!)
 
-1. Install Netlify CLI:
-   ```bash
-   npm i -g netlify-cli
-   ```
-
-2. Deploy:
+1. Deploy directly:
    ```bash
    cd christmas-slide
-   netlify deploy --prod
+   npx netlify-cli deploy --prod
    ```
+
+2. Follow the prompts. No build step needed!
 
 ### Option 4: GitHub Pages
 
